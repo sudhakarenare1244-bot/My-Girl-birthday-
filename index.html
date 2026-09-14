@@ -46,89 +46,6 @@ body{
   to{opacity:.30}
 }
 
-/* ===== COUNTDOWN ===== */
-
-#countdownScreen{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  text-align:center;
-  background:
-    radial-gradient(circle at 50% 0,#6b304f,#24131f 55%,#08070c);
-}
-
-.countdown-box{
-  width:min(430px,100%);
-  padding:35px 22px;
-  border-radius:30px;
-  background:#ffffff0d;
-  border:1px solid #ffc4dd30;
-  box-shadow:0 25px 70px #0009,0 0 40px #ff79ad22;
-  backdrop-filter:blur(15px);
-  animation:boxIn 1s ease;
-}
-
-.countdown-box .tiny{
-  font:11px Arial,sans-serif;
-  letter-spacing:3px;
-  color:#f7bdd7;
-  margin-bottom:18px;
-}
-
-.countdown-box h1{
-  font-size:38px;
-  color:#ffd8e8;
-  text-shadow:0 0 25px #ff9fc388;
-}
-
-.countdown-box p{
-  margin-top:12px;
-  font:14px/1.7 Arial,sans-serif;
-  color:#f9eaf1;
-}
-
-#countdown{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin:30px 0 20px;
-}
-
-#countdown span{
-  width:72px;
-  padding:13px 4px;
-  border-radius:17px;
-  background:#ffffff12;
-  border:1px solid #ffc4dd25;
-}
-
-#countdown b{
-  display:block;
-  font:bold 25px Arial,sans-serif;
-  color:#fff;
-}
-
-#countdown small{
-  display:block;
-  margin-top:5px;
-  font:10px Arial,sans-serif;
-  color:#efb6d1;
-}
-
-.wait{
-  opacity:.75;
-  font-size:12px!important;
-}
-
-@keyframes boxIn{
-  from{opacity:0;transform:scale(.85) translateY(20px)}
-  to{opacity:1;transform:none}
-}
-
 /* ===== MAIN ===== */
 
 .screen{
@@ -205,7 +122,7 @@ button:active{
   transform:scale(.96);
 }
 
-/* ===== GIFT — ORIGINAL STYLE PRESERVED ===== */
+/* ===== GIFT ===== */
 
 .gift{
   width:155px;
@@ -214,6 +131,8 @@ button:active{
   position:relative;
   cursor:pointer;
   animation:float 2.4s infinite;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
 }
 
 .box{
@@ -545,11 +464,17 @@ button:active{
 @keyframes rise{
   0%{transform:translateY(0) scale(.5);opacity:0}
   15%{opacity:1}
-  100%{transform:translateY(-110vh) scale(1.5) rotate(18deg);opacity:0}
+  100%{
+    transform:translateY(-110vh) scale(1.5) rotate(18deg);
+    opacity:0
+  }
 }
 
 @keyframes fall{
-  to{transform:translateY(110vh) rotate(720deg);opacity:0}
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0
+  }
 }
 
 @keyframes glow{
@@ -563,18 +488,38 @@ button:active{
 }
 
 @keyframes photoReveal{
-  from{opacity:0;transform:scale(.75);filter:blur(12px)}
-  to{opacity:1;transform:scale(1);filter:blur(0)}
+  from{
+    opacity:0;
+    transform:scale(.75);
+    filter:blur(12px)
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+    filter:blur(0)
+  }
 }
 
 @keyframes photoFlip{
-  from{opacity:0;transform:rotateY(80deg) scale(.9)}
-  to{opacity:1;transform:rotateY(0) scale(1)}
+  from{
+    opacity:0;
+    transform:rotateY(80deg) scale(.9)
+  }
+  to{
+    opacity:1;
+    transform:rotateY(0) scale(1)
+  }
 }
 
 @keyframes photoZoom{
-  from{opacity:0;transform:scale(1.18)}
-  to{opacity:1;transform:scale(1)}
+  from{
+    opacity:0;
+    transform:scale(1.18)
+  }
+  to{
+    opacity:1;
+    transform:scale(1)
+  }
 }
 
 @keyframes shine{
@@ -582,16 +527,27 @@ button:active{
 }
 
 @keyframes bubbleIn{
-  from{opacity:0;transform:translateY(15px)}
-  to{opacity:1;transform:none}
+  from{
+    opacity:0;
+    transform:translateY(15px)
+  }
+  to{
+    opacity:1;
+    transform:none
+  }
 }
 
 @media(max-width:480px){
+
   h1{font-size:36px}
+
   h2{font-size:28px}
-  p{font-size:14px;line-height:1.75}
-  #countdown span{width:65px}
-  #countdown b{font-size:22px}
+
+  p{
+    font-size:14px;
+    line-height:1.75
+  }
+
 }
 </style>
 </head>
@@ -599,36 +555,6 @@ button:active{
 <body>
 
 <div class="stars"></div>
-
-<!-- COUNTDOWN -->
-
-<div id="countdownScreen">
-
-  <div class="countdown-box">
-
-    <div class="tiny">
-      A LITTLE SURPRISE IS WAITING 🎀
-    </div>
-
-    <h1>For Vidduuuu ❤️</h1>
-
-    <p>Something special will unlock on your birthday...</p>
-
-    <div id="countdown">
-
-      <span><b id="days">00</b><small>Days</small></span>
-      <span><b id="hours">00</b><small>Hours</small></span>
-      <span><b id="minutes">00</b><small>Minutes</small></span>
-      <span><b id="seconds">00</b><small>Seconds</small></span>
-
-    </div>
-
-    <p class="wait">
-      Come back when the countdown ends. ❤️
-    </p>
-
-  </div>
-</div>
 
 <div class="progress" id="progress"></div>
 
@@ -639,18 +565,32 @@ button:active{
 
 <div class="wrap">
 
-<div class="kicker">A LITTLE SURPRISE FOR YOU 🎀</div>
-
-<h1>Hey Vidduuuu...</h1>
-
-<p class="sub">I made something just for you ❤️</p>
-
-<div class="gift" id="gift" onclick="openGift()">
-  <div class="lid"></div>
-  <div class="box"></div>
+<div class="kicker">
+A LITTLE SURPRISE FOR YOU 🎀
 </div>
 
-<p>Tap the gift 🎁</p>
+<h1>
+Hey Vidduuuu...
+</h1>
+
+<p class="sub">
+I made something just for you ❤️
+</p>
+
+<div
+class="gift"
+id="gift"
+onclick="openGift()"
+>
+
+<div class="lid"></div>
+<div class="box"></div>
+
+</div>
+
+<p>
+Tap the gift 🎁
+</p>
 
 </div>
 </section>
@@ -662,31 +602,43 @@ button:active{
 
 <div class="wrap">
 
-<div class="kicker">JUST ONE LITTLE THING...</div>
+<div class="kicker">
+JUST ONE LITTLE THING...
+</div>
 
-<h2>Open My Heart 💌</h2>
+<h2>
+Open My Heart 💌
+</h2>
 
-<p>I could have simply wished you “Happy Birthday”...</p>
+<p>
+I could have simply wished you “Happy Birthday”...
+</p>
 
 <p style="margin-top:10px">
 but you deserve something a little more special. 🥹❤️
 </p>
 
-<div class="envelope" id="envelope" onclick="openEnvelope()">
+<div
+class="envelope"
+id="envelope"
+onclick="openEnvelope()"
+>
 
-  <div class="env-body"></div>
+<div class="env-body"></div>
 
-  <div class="letter">
-    For the most special person... ❤️
-    <br><br>
-    There is something I really want to tell you.
-  </div>
+<div class="letter">
+For the most special person... ❤️
+<br><br>
+There is something I really want to tell you.
+</div>
 
-  <div class="env-flap"></div>
+<div class="env-flap"></div>
 
 </div>
 
-<button onclick="next()">Continue 💗</button>
+<button onclick="next()">
+Continue 💗
+</button>
 
 </div>
 </section>
@@ -698,21 +650,30 @@ but you deserve something a little more special. 🥹❤️
 
 <div class="wrap">
 
-<div class="kicker">01 / 03 · A LITTLE MEMORY</div>
+<div class="kicker">
+01 / 04 · A LITTLE MEMORY
+</div>
 
 <div class="photo-special p1">
 <img src="photo1.jpg" alt="Vidduuuu 🎀">
 </div>
 
-<h2>Vidduuuu 🎀</h2>
+<h2>
+Vidduuuu 🎀
+</h2>
 
 <p>
-Somehow, even a simple photo of you becomes a beautiful memory for me. ❤️
+Somehow, even a simple photo of you becomes
+a beautiful memory for me. ❤️
 </p>
 
-<div class="mini-note">My favourite view ♡</div>
+<div class="mini-note">
+My favourite view ♡
+</div>
 
-<button onclick="next()">Next Memory →</button>
+<button onclick="next()">
+Next Memory →
+</button>
 
 </div>
 </section>
@@ -724,23 +685,30 @@ Somehow, even a simple photo of you becomes a beautiful memory for me. ❤️
 
 <div class="wrap">
 
-<div class="kicker">02 / 03 · THAT SMILE</div>
+<div class="kicker">
+02 / 04 · THAT SMILE
+</div>
 
 <div class="photo-special p2">
 <img src="photo2.png" alt="Vidduuuu 🎀">
 </div>
 
-<h2>That little smile 🫶🏻</h2>
+<h2>
+That little smile 🫶🏻
+</h2>
 
 <p>
-Your smile can turn an ordinary moment into something I want to remember forever. ❤️
+Your smile can turn an ordinary moment
+into something I want to remember forever. ❤️
 </p>
 
 <div class="mini-note">
 You make ordinary moments special ♡
 </div>
 
-<button onclick="next()">Next Memory →</button>
+<button onclick="next()">
+Next Memory →
+</button>
 
 </div>
 </section>
@@ -752,23 +720,30 @@ You make ordinary moments special ♡
 
 <div class="wrap">
 
-<div class="kicker">03 / 03 · US</div>
+<div class="kicker">
+03 / 04 · US
+</div>
 
 <div class="photo-special p3">
 <img src="photo3.jpg" alt="Vidduuuu 🎀">
 </div>
 
-<h2>My favourite person ❤️</h2>
+<h2>
+My favourite person ❤️
+</h2>
 
 <p>
-And honestly… I’m just lucky that I got you in my life. 🥹
+And honestly… I’m just lucky that I got you
+in my life. 🥹
 </p>
 
 <div class="mini-note">
 A memory I want to keep forever ♡
 </div>
 
-<button onclick="next()">One More Thing ✨</button>
+<button onclick="next()">
+Next Memory →
+</button>
 
 </div>
 </section>
@@ -780,19 +755,25 @@ A memory I want to keep forever ♡
 
 <div class="wrap">
 
-<div class="kicker">THE GIRL BEHIND MY SMILE</div>
+<div class="kicker">
+THE GIRL BEHIND MY SMILE
+</div>
 
 <div class="photo-card">
 <img src="vidduuuu.jpg" alt="Vidduuuu 🎀">
 </div>
 
-<h2>Vidduuuu 🎀</h2>
+<h2>
+Vidduuuu 🎀
+</h2>
 
 <p>
 My favourite person. My comfort. My happiness. ❤️
 </p>
 
-<button onclick="next()">One More Thing ✨</button>
+<button onclick="next()">
+One More Thing ✨
+</button>
 
 </div>
 </section>
@@ -804,9 +785,13 @@ My favourite person. My comfort. My happiness. ❤️
 
 <div class="wrap">
 
-<div class="kicker">DO YOU KNOW?</div>
+<div class="kicker">
+DO YOU KNOW?
+</div>
 
-<h2>You are really special to me. 🥹</h2>
+<h2>
+You are really special to me. 🥹
+</h2>
 
 <div class="bubble">
 Because with you, even ordinary moments feel special. ❤️
@@ -824,7 +809,9 @@ Because I can be completely myself with you. 💗
 And because... you're simply <b>you</b>. 🎀
 </div>
 
-<button onclick="next()">Our Little Things 💕</button>
+<button onclick="next()">
+Our Little Things 💕
+</button>
 
 </div>
 </section>
@@ -836,39 +823,53 @@ And because... you're simply <b>you</b>. 🎀
 
 <div class="wrap">
 
-<div class="kicker">THE LITTLE THINGS I LOVE</div>
+<div class="kicker">
+THE LITTLE THINGS I LOVE
+</div>
 
-<h2>Us. 😂❤️</h2>
+<h2>
+Us. 😂❤️
+</h2>
 
 <div class="cards">
 
 <div class="card">
 <div class="emoji">💬</div>
 <b>Random Talks</b>
-<small>Our endless conversations about everything and nothing.</small>
+<small>
+Our endless conversations about everything and nothing.
+</small>
 </div>
 
 <div class="card">
 <div class="emoji">😂</div>
 <b>Our Laughs</b>
-<small>Laughing at the stupidest things together.</small>
+<small>
+Laughing at the stupidest things together.
+</small>
 </div>
 
 <div class="card">
 <div class="emoji">🥹</div>
 <b>Our Moments</b>
-<small>Small memories that somehow mean the most.</small>
+<small>
+Small memories that somehow mean the most.
+</small>
 </div>
 
 <div class="card">
 <div class="emoji">❤️</div>
 <b>Coming Back</b>
-<small>Even after little fights, choosing each other again.</small>
+<small>
+Even after little fights, choosing each other again.
+</small>
 </div>
 
 </div>
 
-<button onclick="next()">Now Read This 💌</button>
+<button onclick="next()">
+Now Read This 💌
+</button>
 
 </div>
 </section>
@@ -880,9 +881,13 @@ And because... you're simply <b>you</b>. 🎀
 
 <div class="wrap">
 
-<div class="kicker">FROM MY HEART</div>
+<div class="kicker">
+FROM MY HEART
+</div>
 
-<h2>For You, Vidduuuu 🎀</h2>
+<h2>
+For You, Vidduuuu 🎀
+</h2>
 
 <div class="message">
 
@@ -919,7 +924,8 @@ I don’t know what the future holds, but I know that every moment I spend with 
 </p>
 
 <p>
-So once again, Happy Birthday, Baby. 🎂❤️ Keep smiling, keep shining, and never change the beautiful person you are.
+So once again, Happy Birthday, Baby. 🎂❤️
+Keep smiling, keep shining, and never change the beautiful person you are.
 </p>
 
 <p>
@@ -938,7 +944,9 @@ Love you so much. 🫶🏻✨
 
 </div>
 
-<button onclick="next()">Make a Wish 🎂</button>
+<button onclick="next()">
+Make a Wish 🎂
+</button>
 
 </div>
 </section>
@@ -950,13 +958,21 @@ Love you so much. 🫶🏻✨
 
 <div class="wrap">
 
-<div class="kicker">YOUR SPECIAL DAY</div>
+<div class="kicker">
+YOUR SPECIAL DAY
+</div>
 
-<h1>Make a Wish 🎂</h1>
+<h1>
+Make a Wish 🎂
+</h1>
 
-<div class="cake">🎂</div>
+<div class="cake">
+🎂
+</div>
 
-<p>Close your eyes for a second...</p>
+<p>
+Close your eyes for a second...
+</p>
 
 <p style="margin-top:8px">
 Make your biggest wish. ✨
@@ -966,7 +982,9 @@ Make your biggest wish. ✨
 You deserve every beautiful thing life has to offer. ❤️
 </p>
 
-<button onclick="celebrate()">Celebrate! 🎉</button>
+<button onclick="celebrate()">
+Celebrate! 🎉
+</button>
 
 </div>
 </section>
@@ -978,11 +996,17 @@ You deserve every beautiful thing life has to offer. ❤️
 
 <div class="wrap">
 
-<div class="kicker">AND FINALLY...</div>
+<div class="kicker">
+AND FINALLY...
+</div>
 
-<h1>Happy Birthday</h1>
+<h1>
+Happy Birthday
+</h1>
 
-<h2 style="margin-top:12px">Vidduuuu 🎀</h2>
+<h2 style="margin-top:12px">
+Vidduuuu 🎀
+</h2>
 
 <div class="big-love">
 I Love You ❤️
@@ -1007,120 +1031,76 @@ Made with love, just for you. 🎀
 <script>
 
 /* =========================
-   COUNTDOWN
-========================= */
-
-const birthday =
-new Date("2026-09-15T00:00:00+05:30").getTime();
-
-const countdownScreen =
-document.getElementById("countdownScreen");
-
-function updateCountdown(){
-
-const now=new Date().getTime();
-
-const distance=birthday-now;
-
-if(distance<=0){
-
-countdownScreen.style.display="none";
-
-clearInterval(countdownTimer);
-
-return;
-}
-
-const days=Math.floor(
-distance/(1000*60*60*24)
-);
-
-const hours=Math.floor(
-(distance/(1000*60*60))%24
-);
-
-const minutes=Math.floor(
-(distance/(1000*60))%60
-);
-
-const seconds=Math.floor(
-(distance/1000)%60
-);
-
-document.getElementById("days").textContent=
-String(days).padStart(2,"0");
-
-document.getElementById("hours").textContent=
-String(hours).padStart(2,"0");
-
-document.getElementById("minutes").textContent=
-String(minutes).padStart(2,"0");
-
-document.getElementById("seconds").textContent=
-String(seconds).padStart(2,"0");
-
-}
-
-updateCountdown();
-
-const countdownTimer=setInterval(updateCountdown,1000);
-
-
-/* =========================
    NAVIGATION
 ========================= */
 
-let current=1;
-const total=11;
+let current = 1;
+const total = 11;
 
 function show(n){
 
-if(n<1)n=1;
-if(n>total)n=total;
+  if(n < 1) n = 1;
+  if(n > total) n = total;
 
-document
-.querySelectorAll(".screen")
-.forEach(x=>x.classList.remove("active"));
+  document.querySelectorAll(".screen").forEach(function(screen){
+    screen.classList.remove("active");
+  });
 
-document
-.getElementById("s"+n)
-.classList.add("active");
+  const screen = document.getElementById("s" + n);
 
-current=n;
+  if(screen){
+    screen.classList.add("active");
+  }
 
-document.getElementById("progress")
-.style.width=((n-1)/(total-1)*100)+"%";
+  current = n;
 
-window.scrollTo(0,0);
+  const progress = document.getElementById("progress");
 
+  if(progress){
+    progress.style.width =
+      ((n - 1) / (total - 1) * 100) + "%";
+  }
+
+  window.scrollTo(0,0);
 }
+
+
+/* =========================
+   NEXT
+========================= */
 
 function next(){
 
-if(current<total){
-show(current+1);
-}
+  if(current < total){
+    show(current + 1);
+  }
 
 }
 
 
 /* =========================
-   ORIGINAL GIFT
+   GIFT
 ========================= */
+
+let giftOpened = false;
 
 function openGift(){
 
-document
-.getElementById("gift")
-.classList.add("open");
+  if(giftOpened) return;
 
-burst();
+  giftOpened = true;
 
-setTimeout(()=>{
+  const gift = document.getElementById("gift");
 
-show(2);
+  if(gift){
+    gift.classList.add("open");
+  }
 
-},1100);
+  burst();
+
+  setTimeout(function(){
+    show(2);
+  },1100);
 
 }
 
@@ -1131,39 +1111,54 @@ show(2);
 
 function openEnvelope(){
 
-document
-.getElementById("envelope")
-.classList.add("open");
+  const envelope =
+    document.getElementById("envelope");
 
-burst();
+  if(envelope){
+    envelope.classList.add("open");
+  }
+
+  burst();
 
 }
 
 
 /* =========================
-   HEART EFFECT
+   HEART
 ========================= */
 
 function heart(){
 
-const h=document.createElement("div");
+  const h = document.createElement("div");
 
-h.className="float";
+  h.className = "float";
 
-h.innerHTML=["❤️","💗","💕","💖","🎀","✨"]
-[Math.floor(Math.random()*6)];
+  const items = [
+    "❤️",
+    "💗",
+    "💕",
+    "💖",
+    "🎀",
+    "✨"
+  ];
 
-h.style.left=Math.random()*100+"vw";
+  h.innerHTML =
+    items[Math.floor(Math.random()*items.length)];
 
-h.style.fontSize=(16+Math.random()*22)+"px";
+  h.style.left =
+    Math.random()*100 + "vw";
 
-h.style.animationDuration=(4+Math.random()*3)+"s";
+  h.style.fontSize =
+    (16 + Math.random()*22) + "px";
 
-document.body.appendChild(h);
+  h.style.animationDuration =
+    (4 + Math.random()*3) + "s";
 
-setTimeout(()=>{
-h.remove();
-},7000);
+  document.body.appendChild(h);
+
+  setTimeout(function(){
+    h.remove();
+  },7000);
 
 }
 
@@ -1174,13 +1169,13 @@ h.remove();
 
 function burst(){
 
-for(let i=0;i<18;i++){
+  for(let i=0;i<18;i++){
 
-setTimeout(()=>{
-heart();
-},i*70);
+    setTimeout(function(){
+      heart();
+    },i*70);
 
-}
+  }
 
 }
 
@@ -1191,42 +1186,56 @@ heart();
 
 function celebrate(){
 
-show(11);
+  show(11);
 
-for(let i=0;i<70;i++){
+  for(let i=0;i<70;i++){
 
-setTimeout(()=>{
+    setTimeout(function(){
 
-const c=document.createElement("div");
+      const c =
+        document.createElement("div");
 
-c.className="confetti";
+      c.className = "confetti";
 
-c.innerHTML=["🎉","❤️","💗","✨","🎀","💕","🌸"]
-[Math.floor(Math.random()*7)];
+      const items = [
+        "🎉",
+        "❤️",
+        "💗",
+        "✨",
+        "🎀",
+        "💕",
+        "🌸"
+      ];
 
-c.style.left=Math.random()*100+"vw";
+      c.innerHTML =
+        items[Math.floor(Math.random()*items.length)];
 
-c.style.fontSize=(14+Math.random()*20)+"px";
+      c.style.left =
+        Math.random()*100 + "vw";
 
-c.style.animationDuration=(3+Math.random()*3)+"s";
+      c.style.fontSize =
+        (14 + Math.random()*20) + "px";
 
-document.body.appendChild(c);
+      c.style.animationDuration =
+        (3 + Math.random()*3) + "s";
 
-setTimeout(()=>{
-c.remove();
-},6500);
+      document.body.appendChild(c);
 
-},i*35);
+      setTimeout(function(){
+        c.remove();
+      },6500);
 
-}
+    },i*35);
 
-for(let i=0;i<30;i++){
+  }
 
-setTimeout(()=>{
-heart();
-},i*80);
+  for(let i=0;i<30;i++){
 
-}
+    setTimeout(function(){
+      heart();
+    },i*80);
+
+  }
 
 }
 
@@ -1235,13 +1244,11 @@ heart();
    BACKGROUND HEARTS
 ========================= */
 
-setInterval(()=>{
+setInterval(function(){
 
-if(current>=3){
-
-heart();
-
-}
+  if(current >= 3){
+    heart();
+  }
 
 },1800);
 
